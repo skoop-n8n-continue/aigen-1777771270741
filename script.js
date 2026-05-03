@@ -19,21 +19,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update time every second
     const updateTime = () => {
         const now = new Date();
-        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        const dateString = now.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+        const timeZone = 'America/New_York';
 
-        // Extract timezone abbreviation (e.g., GMT, EST)
-        const parts = new Intl.DateTimeFormat('en-us', { timeZoneName: 'short' }).formatToParts(now);
-        let tzString = parts.find(part => part.type === 'timeZoneName')?.value || '';
+        const timeString = now.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: timeZone
+        });
 
-        // Fallback to offset if short name is not available
-        if (!tzString) {
-            const offset = -now.getTimezoneOffset();
-            const hours = Math.floor(Math.abs(offset) / 60);
-            const mins = Math.abs(offset) % 60;
-            const sign = offset >= 0 ? '+' : '-';
-            tzString = `GMT${sign}${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
-        }
+        const dateString = now.toLocaleDateString([], {
+            weekday: 'long',
+            month: 'long',
+            day: 'numeric',
+            timeZone: timeZone
+        });
+
+        // Extract timezone abbreviation (e.g., EDT)
+        const parts = new Intl.DateTimeFormat('en-us', {
+            timeZoneName: 'short',
+            timeZone: timeZone
+        }).formatToParts(now);
+        let tzString = parts.find(part => part.type === 'timeZoneName')?.value || 'EDT';
 
         infoText.textContent = `${dateString} | ${timeString} ${tzString}`;
     };

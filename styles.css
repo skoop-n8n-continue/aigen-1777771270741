@@ -33,11 +33,15 @@ p {
 }
 
 #info-text {
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    text-align: center;
     font-size: 1.4rem;
     color: #e0c0c0; /* Brighter for better visibility */
-    margin-top: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+    margin: 0;
 }
 
 @keyframes fadeIn {
