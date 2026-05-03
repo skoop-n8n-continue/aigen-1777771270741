@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Hello World Signage App Loaded');
 
-    const colors = ['#00b7af', '#ffffff', '#6a7071'];
+    const colors = ['#ff4b2b', '#ff416c', '#ff0000'];
     let colorIndex = 0;
     const greeting = document.getElementById('greeting');
 
