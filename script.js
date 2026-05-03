@@ -21,7 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = new Date();
         const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const dateString = now.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
-        infoText.textContent = `${dateString} | ${timeString}`;
+
+        // Extract timezone abbreviation (e.g., GMT, EST)
+        const tzString = now.toLocaleTimeString('en-us', { timeZoneName: 'short' }).split(' ').pop();
+
+        infoText.textContent = `${dateString} | ${timeString} ${tzString}`;
     };
 
     updateTime();
