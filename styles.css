@@ -33,9 +33,9 @@ p {
 }
 
 #info-text {
-    font-size: 1.2rem;
-    color: #a89090;
-    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    color: #e0c0c0; /* Brighter for better visibility */
+    margin-top: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
 }

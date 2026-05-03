@@ -23,7 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateString = now.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
 
         // Extract timezone abbreviation (e.g., GMT, EST)
-        const tzString = now.toLocaleTimeString('en-us', { timeZoneName: 'short' }).split(' ').pop();
+        const parts = new Intl.DateTimeFormat('en-us', { timeZoneName: 'short' }).formatToParts(now);
+        let tzString = parts.find(part => part.type === 'timeZoneName')?.value || '';
+
+        // Fallback to offset if short name is not available
+        if (!tzString) {
+            const offset = -now.getTimezoneOffset();
+            const hours = Math.floor(Math.abs(offset) / 60);
+            const mins = Math.abs(offset) % 60;
+            const sign = offset >= 0 ? '+' : '-';
+            tzString = `GMT${sign}${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+        }
 
         infoText.textContent = `${dateString} | ${timeString} ${tzString}`;
     };
