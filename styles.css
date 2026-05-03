@@ -26,9 +26,18 @@ h1 {
 }
 
 p {
-    font-size: 1.5rem;
-    color: #a89090; /* Warm gray subtext */
+    font-size: 1.8rem;
+    color: #ff6b6b; /* Lighter red for subtext */
     margin-top: 1rem;
+    font-weight: 300;
+}
+
+#info-text {
+    font-size: 1.2rem;
+    color: #a89090;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
 }
 
 @keyframes fadeIn {
