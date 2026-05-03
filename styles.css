@@ -1,0 +1,43 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #10181f; /* Dark background as per defaults */
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 5rem;
+    margin: 0;
+    color: #00b7af; /* Primary teal as per defaults */
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #6a7071; /* Secondary gray */
+    margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
